@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: $container-witdh + 60px;
+  font-family: $font-family-base;
+  line-height: 1.4;
+}
+
+p {
+  margin: _ _ 1em;
+
+  &:last-of-type {
+    margin: _ _ 0;
+  }
+}
+
+code {
+  font-family: $font-family-monospace;
+  font-size: 0.9em;
+}

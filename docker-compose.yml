@@ -1,0 +1,28 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./
+    ports:
+      - "8080:80"
+    links:
+      - db:db
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app
+    entrypoint:
+      - /usr/local/bin/yarn
+      - start:watch
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8082:8080

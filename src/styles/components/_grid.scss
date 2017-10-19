@@ -1,0 +1,22 @@
+@include component('grid') {
+  display: flex;
+  flex-direction: column;
+  margin: -.5rem _;
+
+  @include element('row') {
+    display: flex;
+    margin: _ -.5rem;
+  }
+
+  @include element('col') {
+    flex: 1 1 100%;
+    padding: .5rem;
+
+    @for $i from 1 through $grid-columns {
+      @include modifier($i) {
+        flex: 0 0 percentage($i / $grid-columns);
+        max-width: percentage($i / $grid-columns);
+      }
+    }
+  }
+}
