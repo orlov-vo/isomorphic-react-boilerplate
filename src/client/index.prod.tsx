@@ -9,8 +9,8 @@ import { configureStore } from './store/store';
 
 const renderApp = (Component: any) => {
     // Let the reducers handle initial state
-    const initialState: AppState = window.__PRELOADED_STATE__
-        ? window.__PRELOADED_STATE__
+    const initialState: AppState = (window as any).__PRELOADED_STATE__
+        ? (window as any).__PRELOADED_STATE__
         : ({
             user: 'client at dev',
         });

@@ -20,13 +20,16 @@ export const addRouter = curry((
     return Promise.resolve(http);
 });
 
-export const normalizePort = (val: number | string): number => {
+export const normalizePort = (val?: number | string): number | undefined => {
+    if (!val) {
+        return undefined;
+    }
     const port: number = (typeof val === 'string') ? parseInt(val, 10) : val;
-    return (port >= 0) ? port : null;
+    return (port >= 0) ? port : undefined;
 };
 
 export const listen = (http: express.Application): Promise<express.Application> => {
-    const port: number = normalizePort(process.env.PORT || 8080);
+    const port: number = normalizePort(process.env.PORT) || 8080;
     http.set('port', port);
 
     return new Promise((resolve, reject) => {

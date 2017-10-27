@@ -16,7 +16,7 @@ router.use((req: Request, res: Response) => {
         .then((data: string) => {
             const rendered = renderApp(req.url);
             switch (rendered.type) {
-                case RENDER_REDIRECT: return res.redirect(301, rendered.url);
+                case RENDER_REDIRECT: return res.status(301).redirect(rendered.url || '/');
                 case RENDER_HTML: return res.send(
                     data.replace(appSelector, `$1${rendered.html}$3${rendered.state}`));
             }

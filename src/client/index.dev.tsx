@@ -10,14 +10,14 @@ import { configureStore } from './store/store';
 
 const renderApp = (Component: any) => {
     // Grab the state from a global variable injected into the server-generated HTML
-    const initialState: AppState = window.__PRELOADED_STATE__
-        ? window.__PRELOADED_STATE__
+    const initialState: AppState = (window as any).__PRELOADED_STATE__
+        ? (window as any).__PRELOADED_STATE__
         : ({
             user: 'client at dev',
         });
 
     // Allow the passed state to be garbage-collected
-    delete window.__PRELOADED_STATE__;
+    delete (window as any).__PRELOADED_STATE__;
 
     // Let the reducers handle initial state
     const store = configureStore(initialState);
@@ -38,7 +38,5 @@ renderApp(App);
 
 // Hot Module Replacement API
 if (module.hot) {
-    module.hot.accept('./containers/app/app.component', () => {
-        renderApp(App);
-    });
+    module.hot.accept(() => renderApp(App));
 }

@@ -11,7 +11,7 @@ class AppComponent extends React.Component<AppProps> {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
     user: state.user,
 });
 
