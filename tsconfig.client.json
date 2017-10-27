@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/public",
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "moduleResolution": "node"
+  },
+  "files": [
+    "src/client/index.dev.tsx",
+    "src/client/index.prod.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

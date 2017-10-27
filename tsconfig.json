@@ -2,7 +2,10 @@
   "compilerOptions": {
     "module": "commonjs",
     "declaration": false,
-    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
     "removeComments": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
@@ -13,11 +16,7 @@
     "jsx": "react",
     "outDir": "./dist"
   },
-  "include": [
-    "src/**/*"
-  ],
   "exclude": [
-    "src/client/**/*",
     "node_modules",
     "**/*.spec.ts"
   ]
